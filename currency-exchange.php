@@ -41,8 +41,8 @@ define( 'CURRENCY_EXCHANGE_VERSION', '1.0.0' );
  * Hardcoded API Base URL
  * In real world this would be stored as an option value
  */
-define( 'CURRENCY_EXCHANGE_API_BASE_URL', 'http://host.internal' );
-define( 'CURRENCY_EXCHANGE_API_PORT', '32775' );
+define( 'CURRENCY_EXCHANGE_API_BASE_URL', getenv('API_BASE_URL') );
+define( 'CURRENCY_EXCHANGE_API_PORT', getenv('API_PORT') );
 
 /**
  * The code that runs during plugin activation.
