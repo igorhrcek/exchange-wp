@@ -77,10 +77,13 @@ class Currency_Exchange_Admin {
 	public function add_plugin_navigation() {
 		add_menu_page($this->plugin_name, 'Currency Exchange', 'subscriber', $this->plugin_name, array($this, 'display_accounts_page'),
 		'dashicons-money-alt', 26);
-		add_submenu_page( $this->plugin_name, 'Accounts', 'Accounts', 'subscriber', $this->plugin_name, array($this, 'display_accounts_page'));
-		add_submenu_page( $this->plugin_name, 'Create Account', 'Create Account', 'subscriber', $this->plugin_name.'-create-account', array($this, 'display_create_account_page'));
-		add_submenu_page( $this->plugin_name, 'Transfer Money', 'Transfer Money', 'subscriber', $this->plugin_name.'-transfer-money', array($this, 'display_transfer_money_page'));
-		add_submenu_page( $this->plugin_name, 'Transactions', 'Transactions', 'subscriber', $this->plugin_name.'-transactions', array($this, 'display_transactions_page'));
+
+		if(Currency_Exchange_User::has_remote_account()) {
+			add_submenu_page( $this->plugin_name, 'Accounts', 'Accounts', 'subscriber', $this->plugin_name, array($this, 'display_accounts_page'));
+			add_submenu_page( $this->plugin_name, 'Create Account', 'Create Account', 'subscriber', $this->plugin_name.'-create-account', array($this, 'display_create_account_page'));
+			add_submenu_page( $this->plugin_name, 'Transfer Money', 'Transfer Money', 'subscriber', $this->plugin_name.'-transfer-money', array($this, 'display_transfer_money_page'));
+			add_submenu_page( $this->plugin_name, 'Transactions', 'Transactions', 'subscriber', $this->plugin_name.'-transactions', array($this, 'display_transactions_page'));	
+		}
 		add_submenu_page( $this->plugin_name, 'Currencies', 'Currencies', 'subscriber', $this->plugin_name.'-currencies', array($this, 'display_currencies_page'));
 	}
 
